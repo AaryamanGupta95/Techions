@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cih-bg: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+            radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.18), transparent 55%),
+            linear-gradient(to bottom right, #f9fafb, #e5f3ff);
+}
+
+.dark {
+  --cih-bg: radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 55%),
+            radial-gradient(circle at bottom right, rgba(30, 64, 175, 0.35), transparent 55%),
+            radial-gradient(circle at center, rgba(15, 23, 42, 0.9), #020617);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--cih-bg);
+  background-attachment: fixed;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Glassmorphism utility (used across dashboards) */
+.glass-panel {
+  @apply bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-slate-700/60 shadow-lg shadow-sky-100/40 dark:shadow-sky-900/30 rounded-2xl;
+}
+
+/* Subtle 3D hover card */
+.tilt-card {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  transform: translateY(-4px) translateZ(0) scale(1.01);
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
+}
+
+/* Enhanced card styling */
+.enhanced-card {
+  @apply bg-white/95 dark:bg-slate-900/80 backdrop-blur-sm rounded-xl shadow-lg border border-slate-200/50 dark:border-slate-700/50 transition-all duration-300;
+}
+
+.enhanced-card:hover {
+  @apply shadow-xl border-primary-200/50 dark:border-primary-700/50;
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-primary-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent;
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Pulse animation for badges */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
